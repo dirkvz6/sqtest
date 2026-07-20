@@ -55,12 +55,12 @@ autoscaling:
 volumes: []
 volumeMounts: []
 
-# ConfigMap content served by Nginx as index.html
+#  ConfigMap content served by Nginx as index.html
 config:
   title: "Sanquote App"
   greeting: "Hello 👋"
   message: |-
-    This is a test page served by Nginx.  ConfigMap was mounted at /usr/share/nginx/html.
+    "This is a test page served by Nginx.  ConfigMap was mounted at /usr/share/nginx/html."
     
 # Ingress configuration
 ingress:
@@ -68,7 +68,7 @@ ingress:
   className: nginx
   annotations: {}
   hosts:
-    - host: k8s-sqw-sanquote-ui-dev.slm-sra-shared-eks.nprd.aws.sanlamcloud.co.za
+    - host: "k8s-sqw-sanquote-ui-dev.slm-sra-shared-eks.nprd.aws.sanlamcloud.co.za"
       paths:
         - path: /
           pathType: Prefix
