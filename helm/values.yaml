@@ -33,6 +33,7 @@ serviceAccount:
   create: true
   name: ""
   annotations: {}
+  automount: true
 
 livenessProbe:
   httpGet:
