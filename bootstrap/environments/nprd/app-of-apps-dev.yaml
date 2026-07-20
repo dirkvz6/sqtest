@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: sanquote-dev
+  namespace: k8s-sqw-sanquote-ui-dev
+spec: 
+  destination: 
+    namespace: k8s-sqw-sanquote-ui-dev
+    server: "https://kubernetes.default.svc"
+  project: sanquote-dev
+  source: 
+    path: bootstrap/applications/dev
+    repoURL: "https://github.com/slm-sra/sanquote-demo-config.git"
+    targetRevision: nprd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+      - PruneLast=true
+      - PrunePropagationPolicy=backround  

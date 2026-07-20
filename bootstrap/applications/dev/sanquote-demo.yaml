@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sanquote-dev
+  namespace: argocd
+spec:
+  project: sanquote-dev
+  source:
+    repoURL: https://github.com/slm-sra/sanquote-demo-config-nprd.git
+    # Branch
+    targetRevision: nprd     
+    path: helm
+    helm:
+      values: |
+        replicaCount: 1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: k8s-sqw-sanquote-ui-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true 
